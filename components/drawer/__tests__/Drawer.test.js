@@ -1,18 +1,17 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import Drawer from '..';
+import ConfigProvider from '../../config-provider';
 import mountTest from '../../../tests/shared/mountTest';
 import rtlTest from '../../../tests/shared/rtlTest';
 
-const DrawerTest = ({ getContainer }) => {
-  return (
-    <div>
-      <Drawer visible width={400} getContainer={getContainer}>
-        Here is content of Drawer
-      </Drawer>
-    </div>
-  );
-};
+const DrawerTest = ({ getContainer }) => (
+  <div>
+    <Drawer visible width={400} getContainer={getContainer}>
+      Here is content of Drawer
+    </Drawer>
+  </div>
+);
 
 describe('Drawer', () => {
   mountTest(Drawer);
@@ -124,5 +123,39 @@ describe('Drawer', () => {
       </Drawer>,
     );
     expect(wrapper2.find('button.forceRender').length).toBe(1);
+  });
+
+  it('support closeIcon', () => {
+    const wrapper = render(
+      <Drawer visible closable closeIcon={<span>close</span>} width={400} getContainer={false}>
+        Here is content of Drawer
+      </Drawer>,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('ConfigProvider should not warning', () => {
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    mount(
+      <ConfigProvider virtual>
+        <Drawer visible>Bamboo is Light</Drawer>
+      </ConfigProvider>,
+    );
+
+    expect(errorSpy).not.toHaveBeenCalled();
+
+    errorSpy.mockRestore();
+  });
+
+  it('should support ref', () => {
+    const ref = React.createRef();
+    mount(
+      <Drawer visible ref={ref} width={400}>
+        Here is content of Drawer
+      </Drawer>,
+    );
+    expect(typeof ref.current.push).toBe('function');
+    expect(typeof ref.current.pull).toBe('function');
   });
 });

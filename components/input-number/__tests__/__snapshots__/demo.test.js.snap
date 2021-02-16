@@ -11,7 +11,7 @@ exports[`renders ./components/input-number/demo/basic.md correctly 1`] = `
       aria-label="Increase Value"
       class="ant-input-number-handler ant-input-number-handler-up"
       role="button"
-      unselectable="unselectable"
+      unselectable="on"
     >
       <span
         aria-label="up"
@@ -20,7 +20,6 @@ exports[`renders ./components/input-number/demo/basic.md correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
           data-icon="up"
           fill="currentColor"
           focusable="false"
@@ -38,7 +37,7 @@ exports[`renders ./components/input-number/demo/basic.md correctly 1`] = `
       aria-label="Decrease Value"
       class="ant-input-number-handler ant-input-number-handler-down"
       role="button"
-      unselectable="unselectable"
+      unselectable="on"
     >
       <span
         aria-label="down"
@@ -47,7 +46,85 @@ exports[`renders ./components/input-number/demo/basic.md correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          data-icon="down"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+  <div
+    class="ant-input-number-input-wrap"
+  >
+    <input
+      aria-valuemax="10"
+      aria-valuemin="1"
+      aria-valuenow="3"
+      autocomplete="off"
+      class="ant-input-number-input"
+      max="10"
+      min="1"
+      role="spinbutton"
+      step="1"
+      value="3"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders ./components/input-number/demo/borderless.md correctly 1`] = `
+<div
+  class="ant-input-number ant-input-number-borderless"
+>
+  <div
+    class="ant-input-number-handler-wrap"
+  >
+    <span
+      aria-label="Increase Value"
+      class="ant-input-number-handler ant-input-number-handler-up"
+      role="button"
+      unselectable="on"
+    >
+      <span
+        aria-label="up"
+        class="anticon anticon-up ant-input-number-handler-up-inner"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          data-icon="up"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+          />
+        </svg>
+      </span>
+    </span>
+    <span
+      aria-label="Decrease Value"
+      class="ant-input-number-handler ant-input-number-handler-down"
+      role="button"
+      unselectable="on"
+    >
+      <span
+        aria-label="down"
+        class="anticon anticon-down ant-input-number-handler-down-inner"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
           data-icon="down"
           fill="currentColor"
           focusable="false"
@@ -92,7 +169,7 @@ exports[`renders ./components/input-number/demo/digit.md correctly 1`] = `
       aria-label="Increase Value"
       class="ant-input-number-handler ant-input-number-handler-up"
       role="button"
-      unselectable="unselectable"
+      unselectable="on"
     >
       <span
         aria-label="up"
@@ -101,7 +178,6 @@ exports[`renders ./components/input-number/demo/digit.md correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
           data-icon="up"
           fill="currentColor"
           focusable="false"
@@ -119,7 +195,7 @@ exports[`renders ./components/input-number/demo/digit.md correctly 1`] = `
       aria-label="Decrease Value"
       class="ant-input-number-handler ant-input-number-handler-down"
       role="button"
-      unselectable="unselectable"
+      unselectable="on"
     >
       <span
         aria-label="down"
@@ -128,7 +204,6 @@ exports[`renders ./components/input-number/demo/digit.md correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
           data-icon="down"
           fill="currentColor"
           focusable="false"
@@ -162,7 +237,7 @@ exports[`renders ./components/input-number/demo/digit.md correctly 1`] = `
 `;
 
 exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
-<div>
+Array [
   <div
     class="ant-input-number ant-input-number-disabled"
   >
@@ -174,7 +249,7 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-up-disabled"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -183,7 +258,6 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -202,7 +276,7 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-down-disabled"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -211,7 +285,6 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="down"
             fill="currentColor"
             focusable="false"
@@ -243,7 +316,7 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         value="3"
       />
     </div>
-  </div>
+  </div>,
   <div
     style="margin-top:20px"
   >
@@ -255,12 +328,12 @@ exports[`renders ./components/input-number/demo/disabled.md correctly 1`] = `
         Toggle disabled
       </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
-<div>
+Array [
   <div
     class="ant-input-number"
   >
@@ -271,7 +344,7 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -280,7 +353,6 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -298,7 +370,7 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -307,7 +379,6 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="down"
             fill="currentColor"
             focusable="false"
@@ -326,17 +397,19 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
       class="ant-input-number-input-wrap"
     >
       <input
+        aria-valuemax="9007199254740991"
         aria-valuemin="-9007199254740991"
         aria-valuenow="1000"
         autocomplete="off"
         class="ant-input-number-input"
+        max="9007199254740991"
         min="-9007199254740991"
         role="spinbutton"
         step="1"
         value="$ 1,000"
       />
     </div>
-  </div>
+  </div>,
   <div
     class="ant-input-number"
   >
@@ -348,7 +421,7 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-up-disabled"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -357,7 +430,6 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -375,7 +447,7 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -384,7 +456,6 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="down"
             fill="currentColor"
             focusable="false"
@@ -415,16 +486,14 @@ exports[`renders ./components/input-number/demo/formatter.md correctly 1`] = `
         value="100%"
       />
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;
 
-exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
-<div
-  class="site-input-number-wrapper"
->
+exports[`renders ./components/input-number/demo/keyboard.md correctly 1`] = `
+Array [
   <div
-    class="ant-input-number ant-input-number-lg"
+    class="ant-input-number"
   >
     <div
       class="ant-input-number-handler-wrap"
@@ -433,7 +502,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -442,7 +511,6 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -460,7 +528,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -469,7 +537,101 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
+            data-icon="down"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+            />
+          </svg>
+        </span>
+      </span>
+    </div>
+    <div
+      class="ant-input-number-input-wrap"
+    >
+      <input
+        aria-valuemax="10"
+        aria-valuemin="1"
+        aria-valuenow="3"
+        autocomplete="off"
+        class="ant-input-number-input"
+        max="10"
+        min="1"
+        role="spinbutton"
+        step="1"
+        value="3"
+      />
+    </div>
+  </div>,
+  <div
+    style="margin-top:20px"
+  >
+    <button
+      class="ant-btn ant-btn-primary"
+      type="button"
+    >
+      <span>
+        Toggle keyboard
+      </span>
+    </button>
+  </div>,
+]
+`;
+
+exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
+<div
+  class="site-input-number-wrapper"
+>
+  <div
+    class="ant-input-number ant-input-number-lg"
+  >
+    <div
+      class="ant-input-number-handler-wrap"
+    >
+      <span
+        aria-label="Increase Value"
+        class="ant-input-number-handler ant-input-number-handler-up"
+        role="button"
+        unselectable="on"
+      >
+        <span
+          aria-label="up"
+          class="anticon anticon-up ant-input-number-handler-up-inner"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="up"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        aria-label="Decrease Value"
+        class="ant-input-number-handler ant-input-number-handler-down"
+        role="button"
+        unselectable="on"
+      >
+        <span
+          aria-label="down"
+          class="anticon anticon-down ant-input-number-handler-down-inner"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
             data-icon="down"
             fill="currentColor"
             focusable="false"
@@ -511,7 +673,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -520,7 +682,6 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -538,7 +699,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -547,7 +708,6 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="down"
             fill="currentColor"
             focusable="false"
@@ -589,7 +749,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Increase Value"
         class="ant-input-number-handler ant-input-number-handler-up"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="up"
@@ -598,7 +758,6 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="up"
             fill="currentColor"
             focusable="false"
@@ -616,7 +775,7 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         aria-label="Decrease Value"
         class="ant-input-number-handler ant-input-number-handler-down"
         role="button"
-        unselectable="unselectable"
+        unselectable="on"
       >
         <span
           aria-label="down"
@@ -625,7 +784,6 @@ exports[`renders ./components/input-number/demo/size.md correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
             data-icon="down"
             fill="currentColor"
             focusable="false"

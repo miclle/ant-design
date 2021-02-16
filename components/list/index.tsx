@@ -101,19 +101,12 @@ function List<T>({
 
   const keys: { [key: string]: string } = {};
 
-  const triggerPaginationEvent = (eventName: string) => {
-    return (page: number, pageSize: number) => {
-      setPaginationCurrent(page);
-      setPaginationSize(pageSize);
-      if (eventName === 'onShowSizeChange') {
-        if (pagination) {
-          pagination?.onChange?.(page, pageSize);
-        }
-      }
-      if (pagination && (pagination as any)[eventName]) {
-        (pagination as any)[eventName](page, pageSize);
-      }
-    };
+  const triggerPaginationEvent = (eventName: string) => (page: number, pageSize: number) => {
+    setPaginationCurrent(page);
+    setPaginationSize(pageSize);
+    if (pagination && (pagination as any)[eventName]) {
+      (pagination as any)[eventName](page, pageSize);
+    }
   };
 
   const onPaginationChange = triggerPaginationEvent('onChange');
@@ -142,17 +135,13 @@ function List<T>({
     return renderItem(item, index);
   };
 
-  const isSomethingAfterLastItem = () => {
-    return !!(loadMore || pagination || footer);
-  };
+  const isSomethingAfterLastItem = () => !!(loadMore || pagination || footer);
 
-  const renderEmptyFunc = (prefixCls: string, renderEmptyHandler: RenderEmptyHandler) => {
-    return (
-      <div className={`${prefixCls}-empty-text`}>
-        {(locale && locale.emptyText) || renderEmptyHandler('List')}
-      </div>
-    );
-  };
+  const renderEmptyFunc = (prefixCls: string, renderEmptyHandler: RenderEmptyHandler) => (
+    <div className={`${prefixCls}-empty-text`}>
+      {(locale && locale.emptyText) || renderEmptyHandler('List')}
+    </div>
+  );
 
   const prefixCls = getPrefixCls('list', customizePrefixCls);
   let loadingProp = loading;
@@ -177,16 +166,20 @@ function List<T>({
       break;
   }
 
-  const classString = classNames(prefixCls, className, {
-    [`${prefixCls}-vertical`]: itemLayout === 'vertical',
-    [`${prefixCls}-${sizeCls}`]: sizeCls,
-    [`${prefixCls}-split`]: split,
-    [`${prefixCls}-bordered`]: bordered,
-    [`${prefixCls}-loading`]: isLoading,
-    [`${prefixCls}-grid`]: grid,
-    [`${prefixCls}-something-after-last-item`]: isSomethingAfterLastItem(),
-    [`${prefixCls}-rtl`]: direction === 'rtl',
-  });
+  const classString = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-vertical`]: itemLayout === 'vertical',
+      [`${prefixCls}-${sizeCls}`]: sizeCls,
+      [`${prefixCls}-split`]: split,
+      [`${prefixCls}-bordered`]: bordered,
+      [`${prefixCls}-loading`]: isLoading,
+      [`${prefixCls}-grid`]: grid,
+      [`${prefixCls}-something-after-last-item`]: isSomethingAfterLastItem(),
+      [`${prefixCls}-rtl`]: direction === 'rtl',
+    },
+    className,
+  );
 
   const paginationProps = {
     ...defaultPaginationProps,

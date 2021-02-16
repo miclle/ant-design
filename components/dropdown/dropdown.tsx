@@ -35,6 +35,7 @@ type Align = {
 };
 
 export interface DropDownProps {
+  arrow?: boolean;
   trigger?: ('click' | 'hover' | 'contextMenu')[];
   overlay: React.ReactElement | OverlayFunc;
   onVisibleChange?: (visible: boolean) => void;
@@ -64,14 +65,15 @@ const Dropdown: DropdownInterface = props => {
   );
 
   const getTransitionName = () => {
+    const rootPrefixCls = getPrefixCls();
     const { placement = '', transitionName } = props;
     if (transitionName !== undefined) {
       return transitionName;
     }
     if (placement.indexOf('top') >= 0) {
-      return 'slide-down';
+      return `${rootPrefixCls}-slide-down`;
     }
-    return 'slide-up';
+    return `${rootPrefixCls}-slide-up`;
   };
 
   const renderOverlay = (prefixCls: string) => {
@@ -86,7 +88,7 @@ const Dropdown: DropdownInterface = props => {
       overlayNode = overlay;
     }
     overlayNode = React.Children.only(
-      typeof overlayNode === 'string' ? <span>overlayNode</span> : overlayNode,
+      typeof overlayNode === 'string' ? <span>{overlayNode}</span> : overlayNode,
     );
 
     const overlayProps = overlayNode.props;
@@ -130,6 +132,7 @@ const Dropdown: DropdownInterface = props => {
   };
 
   const {
+    arrow,
     prefixCls: customizePrefixCls,
     children,
     trigger,
@@ -142,9 +145,13 @@ const Dropdown: DropdownInterface = props => {
   const child = React.Children.only(children) as React.ReactElement<any>;
 
   const dropdownTrigger = cloneElement(child, {
-    className: classNames(child.props.className, `${prefixCls}-trigger`, {
-      [`${prefixCls}-rtl`]: direction === 'rtl',
-    }),
+    className: classNames(
+      `${prefixCls}-trigger`,
+      {
+        [`${prefixCls}-rtl`]: direction === 'rtl',
+      },
+      child.props.className,
+    ),
     disabled,
   });
 
@@ -160,6 +167,7 @@ const Dropdown: DropdownInterface = props => {
 
   return (
     <RcDropdown
+      arrow={arrow}
       alignPoint={alignPoint}
       {...props}
       overlayClassName={overlayClassNameCustomized}

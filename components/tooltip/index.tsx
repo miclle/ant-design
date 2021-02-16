@@ -2,11 +2,13 @@ import * as React from 'react';
 import RcTooltip from 'rc-tooltip';
 import { TooltipProps as RcTooltipProps } from 'rc-tooltip/lib/Tooltip';
 import classNames from 'classnames';
-import { BuildInPlacements } from 'rc-trigger/lib/interface';
+import { placements as Placements } from 'rc-tooltip/lib/placements';
 import getPlacements, { AdjustOverflow, PlacementsConfig } from './placements';
 import { cloneElement, isValidElement } from '../_util/reactNode';
 import { ConfigContext } from '../config-provider';
 import { PresetColorType, PresetColorTypes } from '../_util/colors';
+import { LiteralUnion } from '../_util/type';
+import { getTransitionName } from '../_util/motion';
 
 export { AdjustOverflow, PlacementsConfig };
 
@@ -36,16 +38,17 @@ export interface TooltipAlignConfig {
   useCssTransform?: boolean;
 }
 
-export interface AbstractTooltipProps extends Partial<RcTooltipProps> {
+export interface AbstractTooltipProps extends Partial<Omit<RcTooltipProps, 'children'>> {
   style?: React.CSSProperties;
   className?: string;
-  color?: PresetColorType;
+  color?: LiteralUnion<PresetColorType, string>;
   placement?: TooltipPlacement;
-  builtinPlacements?: BuildInPlacements;
+  builtinPlacements?: typeof Placements;
   openClassName?: string;
   arrowPointAtCenter?: boolean;
   autoAdjustOverflow?: boolean | AdjustOverflow;
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
+  children?: React.ReactNode;
 }
 
 export type RenderFunction = () => React.ReactNode;
@@ -210,9 +213,11 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     overlayClassName,
     color,
     overlayInnerStyle,
+    children,
   } = props;
-  const children = props.children as React.ReactElement<any>;
   const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
+  const rootPrefixCls = getPrefixCls();
+
   let tempVisible = visible;
   // Hide tooltip when there is no title
   if (!('visible' in props) && isNoTitle()) {
@@ -233,7 +238,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     [`${prefixCls}-${color}`]: color && PresetColorRegex.test(color),
   });
 
-  let formattedOverlayInnerStyle;
+  let formattedOverlayInnerStyle = overlayInnerStyle;
   let arrowContentStyle;
   if (color && !PresetColorRegex.test(color)) {
     formattedOverlayInnerStyle = { ...overlayInnerStyle, background: color };
@@ -254,6 +259,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       onPopupAlign={onPopupAlign}
       overlayInnerStyle={formattedOverlayInnerStyle}
       arrowContent={<span className={`${prefixCls}-arrow-content`} style={arrowContentStyle} />}
+      transitionName={getTransitionName(rootPrefixCls, 'zoom-big-fast', props.transitionName)}
     >
       {tempVisible ? cloneElement(child, { className: childCls }) : child}
     </RcTooltip>
@@ -264,7 +270,6 @@ Tooltip.displayName = 'Tooltip';
 
 Tooltip.defaultProps = {
   placement: 'top' as TooltipPlacement,
-  transitionName: 'zoom-big-fast',
   mouseEnterDelay: 0.1,
   mouseLeaveDelay: 0.1,
   arrowPointAtCenter: false,

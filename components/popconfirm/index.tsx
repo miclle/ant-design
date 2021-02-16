@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import ExclamationCircleFilled from '@ant-design/icons/ExclamationCircleFilled';
 import KeyCode from 'rc-util/lib/KeyCode';
 import Tooltip, { AbstractTooltipProps } from '../tooltip';
@@ -9,6 +10,7 @@ import defaultLocale from '../locale/default';
 import { ConfigContext } from '../config-provider';
 import { getRenderPropValue, RenderFunction } from '../_util/getRenderPropValue';
 import { cloneElement } from '../_util/reactNode';
+import { getTransitionName } from '../_util/motion';
 
 export interface PopconfirmProps extends AbstractTooltipProps {
   title: React.ReactNode | RenderFunction;
@@ -121,14 +123,23 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   const { getPrefixCls } = React.useContext(ConfigContext);
 
-  const { prefixCls: customizePrefixCls, placement, children, ...restProps } = props;
+  const {
+    prefixCls: customizePrefixCls,
+    placement,
+    children,
+    overlayClassName,
+    ...restProps
+  } = props;
   const prefixCls = getPrefixCls('popover', customizePrefixCls);
+  const prefixClsConfirm = getPrefixCls('popconfirm', customizePrefixCls);
+  const overlayClassNames = classNames(prefixClsConfirm, overlayClassName);
 
   const overlay = (
     <LocaleReceiver componentName="Popconfirm" defaultLocale={defaultLocale.Popconfirm}>
       {(popconfirmLocale: PopconfirmLocale) => renderOverlay(prefixCls, popconfirmLocale)}
     </LocaleReceiver>
   );
+  const rootPrefixCls = getPrefixCls();
 
   return (
     <Tooltip
@@ -138,11 +149,15 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       onVisibleChange={onVisibleChange}
       visible={visible}
       overlay={overlay}
+      overlayClassName={overlayClassNames}
       ref={ref as any}
+      transitionName={getTransitionName(rootPrefixCls, 'zoom-big', props.transitionName)}
     >
       {cloneElement(children, {
         onKeyDown: (e: React.KeyboardEvent<any>) => {
-          children?.props.onKeyDown?.(e);
+          if (React.isValidElement(children)) {
+            children?.props.onKeyDown?.(e);
+          }
           onKeyDown(e);
         },
       })}
@@ -151,7 +166,6 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 });
 
 Popconfirm.defaultProps = {
-  transitionName: 'zoom-big',
   placement: 'top' as PopconfirmProps['placement'],
   trigger: 'click' as PopconfirmProps['trigger'],
   okType: 'primary' as PopconfirmProps['okType'],
